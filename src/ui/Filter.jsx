@@ -8,6 +8,11 @@ const StyledFilter = styled.div`
   padding: 0.4rem;
   display: flex;
   gap: 0.4rem;
+
+  @media (max-width: 768px) {
+    padding: 0.2rem;
+    gap: 0.2rem;
+  }
 `;
 
 const FilterButton = styled.button`
@@ -24,13 +29,23 @@ const FilterButton = styled.button`
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-  /* To give the same height as select */
+
   padding: 0.44rem 0.8rem;
   transition: all 0.3s;
 
   &:hover:not(:disabled) {
     background-color: var(--color-brand-600);
     color: var(--color-brand-50);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
   }
 `;
 export default function Filter({ filterField, options }) {

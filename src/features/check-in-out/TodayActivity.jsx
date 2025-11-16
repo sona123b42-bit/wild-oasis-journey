@@ -6,24 +6,31 @@ import useTodayActivity from "./useTodayActivity";
 import Spinner from "../../ui/Spinner";
 import TodayItem from "../dashboard/TodayItem";
 const StyledToday = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
 
   padding: 3.2rem;
+  padding-top: 2.4rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  grid-column: 1 / span 2;
-  padding-top: 2.4rem;
+
+  grid-column: span 2;
+  min-width: 0;
+
+  @media (max-width: 900px) {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
 `;
 
 const TodayList = styled.ul`
-  overflow: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  max-height: 30rem;
 
-  /* Removing scrollbars for webkit, firefox, and ms, respectively */
   &::-webkit-scrollbar {
     width: 0 !important;
   }

@@ -25,7 +25,7 @@ const StyledFormRow = styled.div`
         : "1px solid var(--color-grey-100)"};
   }
 
-  /* Special treatment if the row contains buttons, and if it's NOT a vertical row */
+  /* Special case: buttons row */
   ${(props) =>
     props.orientation !== "vertical" &&
     css`
@@ -35,6 +35,16 @@ const StyledFormRow = styled.div`
         gap: 1.2rem;
       }
     `}
+
+  /* 🔥 MOBILE VERSION (force vertical on small screens) */
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+
+    & > * {
+      width: 100%; /* Make input stretch full width */
+    }
+  }
 `;
 
 const Label = styled.label`

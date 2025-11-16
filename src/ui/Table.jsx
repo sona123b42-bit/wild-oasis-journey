@@ -3,11 +3,20 @@ import styled from "styled-components";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
-
   font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
+`;
+
+// NEW: Scroll area only for header + body
+const ScrollArea = styled.div`
+  overflow-x: auto;
+
+  @media (max-width: 650px) {
+    display: block;
+    white-space: nowrap;
+  }
 `;
 
 const CommonRow = styled.header`
@@ -16,6 +25,11 @@ const CommonRow = styled.header`
   column-gap: 2.4rem;
   align-items: center;
   transition: none;
+
+  /* Make sure it actually has something to scroll */
+  @media (max-width: 650px) {
+    min-width: 700px; /* adjust if needed */
+  }
 `;
 
 const StyledHeader = styled(CommonRow)`
@@ -58,7 +72,9 @@ const Empty = styled.p`
   text-align: center;
   margin: 2.4rem;
 `;
+
 const TableContext = createContext();
+
 function Table({ columns, children }) {
   return (
     <TableContext.Provider value={{ columns }}>
@@ -66,6 +82,7 @@ function Table({ columns, children }) {
     </TableContext.Provider>
   );
 }
+
 function Header({ children }) {
   const { columns } = useContext(TableContext);
   return (
@@ -74,6 +91,7 @@ function Header({ children }) {
     </StyledHeader>
   );
 }
+
 function Row({ children }) {
   const { columns } = useContext(TableContext);
   return (
@@ -82,12 +100,21 @@ function Row({ children }) {
     </StyledRow>
   );
 }
+
 function Body({ data, render }) {
   if (!data.length) return <Empty>There's no data at the moment!</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
 }
+
+// NEW: Scroll wrapper component
+function Scroll({ children }) {
+  return <ScrollArea>{children}</ScrollArea>;
+}
+
 Table.Header = Header;
 Table.Row = Row;
 Table.Body = Body;
 Table.Footer = Footer;
+Table.Scroll = Scroll;
+
 export default Table;

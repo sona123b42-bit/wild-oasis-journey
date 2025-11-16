@@ -11,20 +11,45 @@ import {
 import { useDarkMode } from "../../../context/DarkModeContex";
 
 const ChartBox = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-
   padding: 2.4rem 3.2rem;
-  grid-column: 3 / span 2;
 
-  & > *:first-child {
-    margin-bottom: 1.6rem;
+  /* 🔥 Span across both columns */
+  grid-column: span 2;
+
+  @media (max-width: 900px) {
+    grid-column: span 2; /* keep full-width on tablets too */
+    padding: 2rem 2.4rem;
   }
 
-  & .recharts-pie-label-text {
-    font-weight: 600;
+  @media (max-width: 768px) {
+    padding: 1.6rem 2rem;
+
+    .recharts-wrapper {
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+
+    .recharts-legend-wrapper {
+      transform: scale(0.9);
+      margin-left: -10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem 1.6rem;
+
+    .recharts-wrapper {
+      transform: scale(0.75);
+      transform-origin: center;
+    }
+
+    .recharts-legend-wrapper {
+      transform: scale(0.8);
+      margin-left: -20px;
+    }
   }
 `;
 
@@ -152,37 +177,39 @@ function DurationChart({ confirmedStays = [] }) {
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
-      <ResponsiveContainer width="100%" height={240}>
-        <PieChart>
-          <Pie
-            data={data}
-            nameKey="duration"
-            dataKey="value"
-            innerRadius={85}
-            outerRadius={110}
-            cx="40%"
-            cy="50%"
-            paddingAngle={3}
-          >
-            {data.map((entry) => (
-              <Cell
-                fill={entry.color}
-                stroke={entry.color}
-                key={entry.duration}
-              />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend
-            verticalAlign="middle"
-            align="right"
-            width="30%"
-            layout="vertical"
-            iconSize={15}
-            iconType="circle"
-          />
-        </PieChart>
-      </ResponsiveContainer>
+      <div style={{ paddingTop: "5rem" }}>
+        <ResponsiveContainer width="100%" height={240}>
+          <PieChart>
+            <Pie
+              data={data}
+              nameKey="duration"
+              dataKey="value"
+              innerRadius={85}
+              outerRadius={110}
+              cx="40%"
+              cy="50%"
+              paddingAngle={3}
+            >
+              {data.map((entry) => (
+                <Cell
+                  fill={entry.color}
+                  stroke={entry.color}
+                  key={entry.duration}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend
+              verticalAlign="middle"
+              align="right"
+              width="30%"
+              layout="vertical"
+              iconSize={15}
+              iconType="circle"
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     </ChartBox>
   );
 }

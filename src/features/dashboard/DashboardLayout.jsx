@@ -11,17 +11,26 @@ import { useCabins } from "../cabins/useCabins";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto 34rem auto;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.4rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr !important;
+  }
 `;
+const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem;
 
-/*
-We need to distinguish between two types of data here:
-1) BOOKINGS: the actual sales. For example, in the last 30 days, the hotel might have sold 10 bookings online, but these guests might only arrive and check in in the far future (or not, as booking also happen on-site)
-2) STAYS: the actual check-in of guests arriving for their bookings. We can identify stays by their startDate, together with a status of either 'checked-in' (for current stays) or 'checked-out' (for past stays)
-*/
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
 function DashboardLayout() {
   const { isLoading: isLoading1, bookings, numDays } = useRecentBooking();
   const { isLoading: isLoading2, confirmStayed } = useRecentStays();
@@ -30,17 +39,22 @@ function DashboardLayout() {
   if (isLoading1 || isLoading2 || isLoading3) return <Spinner />;
 
   return (
-    <StyledDashboardLayout>
-      <Stats
-        bookings={bookings}
-        confirmedStays={confirmStayed}
-        numDays={numDays}
-        cabinCount={cabins.length}
-      />
-      <TodayActivity />
-      <DurationChart confirmedStays={confirmStayed} />
-      <SalesChart bookings={bookings} numDays={numDays} />
-    </StyledDashboardLayout>
+    <>
+      <StatsGrid>
+        <Stats
+          bookings={bookings}
+          confirmedStays={confirmStayed}
+          numDays={numDays}
+          cabinCount={cabins.length}
+        />
+      </StatsGrid>
+
+      <StyledDashboardLayout>
+        <TodayActivity />
+        <DurationChart confirmedStays={confirmStayed} />
+        <SalesChart bookings={bookings} numDays={numDays} />
+      </StyledDashboardLayout>
+    </>
   );
 }
 
