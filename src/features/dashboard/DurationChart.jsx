@@ -138,7 +138,13 @@ const startDataDark = [
     color: "#7e22ce",
   },
 ];
+const ChartWrapper = styled.div`
+  padding-top: 5rem; /* computer screens */
 
+  @media (max-width: 900px) {
+    padding-top: 0; /* smaller screens */
+  }
+`;
 function prepareData(startData, stays) {
   // A bit ugly code, but sometimes this is what it takes when working with real data 😅
 
@@ -177,7 +183,7 @@ function DurationChart({ confirmedStays = [] }) {
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
-      <div style={{ paddingTop: "5rem" }}>
+      <ChartWrapper>
         <ResponsiveContainer width="100%" height={240}>
           <PieChart>
             <Pie
@@ -209,7 +215,7 @@ function DurationChart({ confirmedStays = [] }) {
             />
           </PieChart>
         </ResponsiveContainer>
-      </div>
+      </ChartWrapper>
     </ChartBox>
   );
 }

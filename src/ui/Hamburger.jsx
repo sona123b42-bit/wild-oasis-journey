@@ -19,10 +19,15 @@ export const HamburgerButton = styled.button`
     box-shadow: none !important;
   }
 
-  @media (min-width: 1025px) {
+  @media (max-width: 1023px) {
+    display: block;
+  }
+
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
+
 export const LineBurger = styled.span`
   position: absolute;
   right: 0;

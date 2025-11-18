@@ -21,7 +21,6 @@ const StyledBookingDataBox = styled.section`
 
 const Header = styled.header`
   background-color: var(--color-brand-500);
-  /* padding: 2.4rem 4rem; */
   padding: 2rem 4rem;
   color: #e0e7ff;
   font-size: 1.8rem;
@@ -29,6 +28,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.2rem;
 
   svg {
     height: 3.2rem;
@@ -48,6 +48,14 @@ const Header = styled.header`
     font-size: 2rem;
     margin-left: 4px;
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.6rem 2rem;
+    gap: 1rem;
+  }
 `;
 
 const Section = styled.section`
@@ -58,13 +66,18 @@ const Guest = styled.div`
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  /* font-size: 1.8rem; */
   margin-bottom: 1.6rem;
   color: var(--color-grey-500);
 
   & p:first-of-type {
     font-weight: 500;
     color: var(--color-grey-700);
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
 `;
 
@@ -91,6 +104,21 @@ const Price = styled.div`
     height: 2.4rem;
     width: 2.4rem;
     color: currentColor !important;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.2rem 1.6rem;
+
+    /* 🔥 Stack the content inside DataItem */
+    & > div {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.4rem;
+    }
   }
 `;
 

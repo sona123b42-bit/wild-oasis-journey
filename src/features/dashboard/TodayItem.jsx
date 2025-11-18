@@ -10,7 +10,6 @@ const StyledTodayItem = styled.li`
   grid-template-columns: 9rem 2rem 1fr 7rem 9rem;
   gap: 1.2rem;
   align-items: center;
-
   font-size: 1.4rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid var(--color-grey-100);
@@ -19,15 +18,15 @@ const StyledTodayItem = styled.li`
     border-top: 1px solid var(--color-grey-100);
   }
 
-  /* MOBILE FIX — make columns & gap smaller */
-  @media (max-width: 900px) {
-    grid-template-columns: 7rem 1.6rem 1fr 6rem 7rem;
-    gap: 0.6rem;
+  @media (max-width: 1023px) {
+    grid-template-columns: 11rem 2.4rem 1fr 8rem 10rem;
+    gap: 1.6rem;
+    font-size: 1.6rem;
   }
-
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     grid-template-columns: 6rem 1.4rem 1fr 5rem 6rem;
-    gap: 0.4rem;
+    gap: 0.6rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -36,25 +35,24 @@ const Guest = styled.div`
   font-size: 1.4rem;
   line-height: 1.2;
 
-  @media (max-width: 900px) {
-    font-size: 1.2rem;
+  @media (max-width: 1023px) {
+    font-size: 1.6rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 1rem;
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
   }
 `;
 const Nights = styled.div`
   font-size: 1.3rem;
   font-weight: 500;
-  line-height: 1.2;
 
-  @media (max-width: 900px) {
-    font-size: 1.1rem;
+  @media (max-width: 1023px) {
+    font-size: 1.5rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
+  @media (max-width: 600px) {
+    font-size: 1.1rem;
   }
 `;
 

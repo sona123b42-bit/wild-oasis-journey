@@ -12,7 +12,8 @@ const StyledAppLayout = styled.div`
   height: 100vh;
   grid-template-columns: 26rem 1fr;
   grid-template-rows: auto 1fr;
-  @media (max-width: 768px) {
+
+  @media (max-width: 1023px) {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
   }
@@ -23,7 +24,7 @@ const Main = styled.main`
   padding: 4rem 4.8rem 6.4rem;
   overflow: scroll;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     padding: 2.4rem 2rem 3.2rem;
   }
 

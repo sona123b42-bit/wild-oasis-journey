@@ -14,21 +14,20 @@ const StyledDashboardLayout = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2.4rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1279px) {
     grid-template-columns: 1fr !important;
+    column-gap: 0 !important;
+    row-gap: 2.4rem;
   }
 `;
 const StatsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 2.4rem;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr);
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 function DashboardLayout() {

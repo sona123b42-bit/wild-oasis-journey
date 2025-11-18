@@ -18,6 +18,25 @@ const StyledConfirmDelete = styled.div`
     justify-content: flex-end;
     gap: 1.2rem;
   }
+
+  @media (max-width: 600px) {
+    width: 100vw;
+    max-width: 100%;
+    padding: 1.6rem;
+    border-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    /* 🔥 Reduced min-height to reduce gap above buttons */
+    min-height: 26vh;
+
+    & div {
+      margin-top: auto;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
 `;
 
 function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {

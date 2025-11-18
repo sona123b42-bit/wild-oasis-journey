@@ -5,7 +5,7 @@ const StyledFormRow = styled.div`
   align-items: center;
 
   grid-template-columns: ${(props) =>
-    props.orientation === "vertical" ? "1fr" : "24rem 1fr 1.2fr"};
+    props.orientation === "vertical" ? "1fr" : "24rem 1fr"};
   gap: ${(props) => (props.orientation === "vertical" ? "0.8rem" : "2.4rem")};
 
   padding: 1.2rem 0;
@@ -13,7 +13,6 @@ const StyledFormRow = styled.div`
   &:first-child {
     padding-top: 0;
   }
-
   &:last-child {
     padding-bottom: 0;
   }
@@ -25,7 +24,6 @@ const StyledFormRow = styled.div`
         : "1px solid var(--color-grey-100)"};
   }
 
-  /* Special case: buttons row */
   ${(props) =>
     props.orientation !== "vertical" &&
     css`
@@ -36,19 +34,27 @@ const StyledFormRow = styled.div`
       }
     `}
 
-  /* 🔥 MOBILE VERSION (force vertical on small screens) */
-  @media (max-width: 650px) {
-    grid-template-columns: 1fr !important;
-    gap: 0.8rem !important;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
 
     & > * {
-      width: 100%; /* Make input stretch full width */
+      width: 100%;
     }
   }
 `;
 
 const Label = styled.label`
   font-weight: 500;
+  font-size: 1.4rem;
+
+  @media (max-width: 1023px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Error = styled.span`

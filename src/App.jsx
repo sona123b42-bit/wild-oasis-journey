@@ -17,7 +17,8 @@ import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "../context/DarkModeContex";
-
+import PageTitle from "./ui/PageTitle";
+import FaviconSwitcher from "./ui/FaviconSwitcher";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -32,6 +33,8 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <GlobalStyles />
         <BrowserRouter>
+          <FaviconSwitcher />
+          <PageTitle />
           <Routes>
             <Route
               element={

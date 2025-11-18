@@ -10,27 +10,24 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
   gap: 3.2rem;
 
-  /* Desktop + tablet placement */
-  grid-row: 2;
-  grid-column: 1;
+  /* DEFAULT: Mobile/iPad Mini/iPad Air behavior */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 22rem;
+  height: 100vh;
+  z-index: 50;
+  transform: ${({ isOpen }) =>
+    isOpen ? "translateX(0)" : "translateX(-100%)"};
+  transition: transform 0.3s ease-in-out;
 
-  @media (min-width: 768px) {
+  /* DESKTOP + iPad Pro (≥ 1024px) */
+  @media (min-width: 1024px) {
     position: static;
     width: 26rem;
-    transform: translateX(0);
-  }
-
-  @media (max-width: 768px) {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 22rem;
-    height: 100vh;
-    z-index: 50;
-
-    transform: ${({ isOpen }) =>
-      isOpen ? "translateX(0)" : "translateX(-100%)"};
-    transition: transform 0.3s ease-in-out;
+    height: auto;
+    transform: none;
+    transition: none;
   }
 `;
 

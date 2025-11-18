@@ -6,11 +6,15 @@ export const Flag = styled.img`
   display: block;
   border: 1px solid var(--color-grey-100);
 
-  @media (max-width: 900px) {
-    max-width: 1.6rem;
+  @media (max-width: 1023px) {
+    max-width: 2.4rem;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
+    max-width: 1.8rem;
+  }
+
+  @media (max-width: 400px) {
     max-width: 1.4rem;
   }
 `;
